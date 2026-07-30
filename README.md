@@ -6,6 +6,12 @@ SupportOps Agent 是一个面向电商售后场景的全栈智能客服项目。
 
 > 当前仓库是 Spring Boot 后端。Vue 3 前端工程名为 `fin-ai-vue-home`。
 
+
+
+https://github.com/user-attachments/assets/7886dfb0-5898-4486-bf73-b6cece16324e
+
+
+
 ## 项目亮点
 
 - **多意图理解**：一句话可以同时识别金额、物流、产品规格、使用方法和故障排查等多个需求，并逐项回答。
