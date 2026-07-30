@@ -6,9 +6,16 @@ SupportOps Agent 是一个面向电商售后场景的全栈智能客服项目。
 
 > 当前仓库是 Spring Boot 后端。Vue 3 前端工程名为 `fin-ai-vue-home`。
 
+<img width="1910" height="915" alt="image" src="https://github.com/user-attachments/assets/aa50dae1-bf81-4a8c-adf3-eb45e497db8a" />
 
+<img width="1910" height="915" alt="image" src="https://github.com/user-attachments/assets/d6c84844-275b-461d-878b-438515d3a76c" />
 
-https://github.com/user-attachments/assets/e52d45a9-ae5d-4f44-9aec-76dea73bea6d
+<img width="1910" height="915" alt="image" src="https://github.com/user-attachments/assets/23817c51-bcaf-4b2c-a363-4462f8101193" />
+
+<img width="1910" height="915" alt="image" src="https://github.com/user-attachments/assets/91f7d5e9-d775-4301-9185-5252da283c36" />
+<img width="1910" height="915" alt="image" src="https://github.com/user-attachments/assets/0c3d6ac6-b79f-49f3-91a8-ab501879faac" />
+
+<img width="1910" height="915" alt="image" src="https://github.com/user-attachments/assets/ab073d49-cd90-49f6-8cb1-785daef3cd25" />
 
 
 
@@ -226,3 +233,4 @@ Authorization: Bearer <admin-jwt>
 - 基于命中率、MRR、事实正确率和拒答准确率的离线评测集。
 
 具体策略和升级接口见 [RAG检索策略.md](RAG检索策略.md)。
+
