@@ -1,3 +1,7 @@
+
+
+https://github.com/user-attachments/assets/5a2c54e4-66a5-47a2-9353-c20825248d11
+
 # SupportOps Agent｜智能工单诊断与客服协同平台
 
 SupportOps Agent 是一个面向电商售后场景的全栈智能客服项目。它能够理解客户在订单上下文中的真实需求，查询订单、支付、退款、物流和产品资料等可信数据，执行确定性诊断规则，并生成带证据、可审计、可降级的中文客服回复。
@@ -9,7 +13,7 @@ SupportOps Agent 是一个面向电商售后场景的全栈智能客服项目。
 
 
 
-<img width="1910" height="915" alt="image" src="https://github.com/user-attachments/assets/cca80df6-8501-4f20-b871-a7d9fcea7e3a" />
+
 
 
 ## 项目亮点
