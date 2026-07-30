@@ -1,0 +1,33 @@
+@baseUrl = http://localhost:8080
+@token = paste-login-token-here
+
+### 创建异步诊断任务（HTTP 202，立即返回 diagnosisId）
+POST {{baseUrl}}/api/v1/diagnoses
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Idempotency-Key: demo-TK-0706-001-v1
+
+{
+  "ticketNo": "TK-0706-001",
+  "description": "客户已支付成功，但订单仍显示待支付，请诊断原因并生成客服回复。"
+}
+
+### 每 800ms 查询任务；终态为 SUCCESS / DEGRADED_SUCCESS / FAILED
+GET {{baseUrl}}/api/v1/diagnoses/{{diagnosisId}}
+Authorization: Bearer {{token}}
+
+### 查询完整报告
+GET {{baseUrl}}/api/v1/diagnoses/{{diagnosisId}}/report
+Authorization: Bearer {{token}}
+
+### 查询当前用户最近历史
+GET {{baseUrl}}/api/v1/diagnoses?limit=20
+Authorization: Bearer {{token}}
+
+### 采纳诊断建议
+POST {{baseUrl}}/api/v1/diagnoses/{{diagnosisId}}/apply
+Authorization: Bearer {{token}}
+
+### 丢弃诊断任务
+POST {{baseUrl}}/api/v1/diagnoses/{{diagnosisId}}/discard
+Authorization: Bearer {{token}}

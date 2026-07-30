@@ -1,0 +1,26 @@
+spring:
+  config:
+    activate:
+      on-profile: real
+  datasource:
+    url: ${DB_URL:jdbc:mysql://localhost:13306/supportops?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&useSSL=false}
+    username: ${DB_USERNAME:supportops}
+    password: ${DB_PASSWORD:supportops_dev}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  sql:
+    init:
+      mode: never
+
+langchain4j:
+  open-ai:
+    chat-model:
+      api-key: ${AI_API_KEY}
+      base-url: ${AI_BASE_URL:https://dashscope.aliyuncs.com/compatible-mode/v1}
+      model-name: ${AI_MODEL:glm-5.2}
+      temperature: ${AI_TEMPERATURE:0.1}
+      # 700 个汉字的结构化回复连同 JSON 外壳可能超过 600 tokens；过小会截断 JSON。
+      max-tokens: ${AI_MAX_TOKENS:1200}
+      timeout: ${AI_TIMEOUT:20s}
+      max-retries: 1
+      log-requests: false
+      log-responses: false

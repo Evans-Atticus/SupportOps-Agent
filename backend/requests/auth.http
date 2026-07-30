@@ -1,0 +1,24 @@
+@baseUrl = http://localhost:8080/api/v1
+
+### Register an account
+POST {{baseUrl}}/auth/register
+Content-Type: application/json
+
+{
+  "username": "new_agent",
+  "displayName": "新客服",
+  "password": "SupportOps@2026"
+}
+
+### Demo login (password is intentionally local-only)
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "username": "demo",
+  "password": "SupportOps@2026"
+}
+
+### Replace token after login
+GET {{baseUrl}}/auth/me
+Authorization: Bearer {{token}}

@@ -1,0 +1,29 @@
+@baseUrl = http://localhost:8080/api/v1/business
+
+### Scenario 1: order + successful payment + failed callback
+GET {{baseUrl}}/orders/O202607060001
+Authorization: Bearer {{token}}
+
+### Scenario 2: cancelled order refund
+GET {{baseUrl}}/orders/O202607060002/refunds
+Authorization: Bearer {{token}}
+
+### Scenario 3: coupon eligibility
+GET {{baseUrl}}/coupons/FULL300LESS50?customerNo=C202607003
+Authorization: Bearer {{token}}
+
+### Scenario 4: member benefits
+GET {{baseUrl}}/members/M202607060004
+Authorization: Bearer {{token}}
+
+### Scenario 5: logistics comparison
+GET {{baseUrl}}/logistics/SF202607060005
+Authorization: Bearer {{token}}
+
+### Scenario 6: API failures
+GET {{baseUrl}}/api-calls/CLIENT-DEMO-01?apiName=queryOrder
+Authorization: Bearer {{token}}
+
+### Scenario 7: invoice
+GET {{baseUrl}}/orders/O202607060007/invoices
+Authorization: Bearer {{token}}

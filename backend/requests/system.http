@@ -1,0 +1,6 @@
+### Mock profile health check
+GET http://localhost:8080/api/v1/system/health
+X-Request-Id: local-health-0001
+
+### OpenAPI document
+GET http://localhost:8080/v3/api-docs

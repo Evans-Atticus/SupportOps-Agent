@@ -1,0 +1,23 @@
+@baseUrl = http://localhost:8080/api/v1
+
+### List demo tickets
+GET {{baseUrl}}/tickets?page=1&size=20
+Authorization: Bearer {{token}}
+
+### Get a ticket
+GET {{baseUrl}}/tickets/1
+Authorization: Bearer {{token}}
+
+### Create a ticket
+POST {{baseUrl}}/tickets
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "customerId": 1,
+  "ticketNo": "TK-LOCAL-001",
+  "businessNo": "O202607060001",
+  "channel": "WEB",
+  "description": "客户已支付成功，但订单仍显示待支付。",
+  "priority": "HIGH"
+}

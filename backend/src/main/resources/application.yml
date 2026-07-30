@@ -1,0 +1,112 @@
+spring:
+  config:
+    # IDEA 从项目根目录启动时自动读取未提交的 .env；系统环境变量仍具有更高优先级。
+    import: optional:file:.env[.properties]
+  application:
+    name: supportops-agent
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration
+  profiles:
+    default: mock
+  jackson:
+    default-property-inclusion: non_null
+    time-zone: Asia/Shanghai
+
+server:
+  port: ${SERVER_PORT:8080}
+  shutdown: graceful
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+
+logging:
+  pattern:
+    level: "%5p [requestId=%X{requestId:-}]"
+  level:
+    root: INFO
+    dev.langchain4j: WARN
+
+supportops:
+  auth:
+    max-accounts-per-ip-per-hour: ${AUTH_MAX_ACCOUNTS_PER_IP_PER_HOUR:5}
+  integrations:
+    connect-timeout: ${INTEGRATION_CONNECT_TIMEOUT:3s}
+    read-timeout: ${INTEGRATION_READ_TIMEOUT:8s}
+    # 每个平台可独立切换为真实 HTTP 数据源；默认关闭时继续使用本地演示数据。
+    erp:
+      enabled: ${ERP_INTEGRATION_ENABLED:false}
+      base-url: ${ERP_BASE_URL:}
+      token: ${ERP_API_TOKEN:}
+      auth-header: ${ERP_AUTH_HEADER:Authorization}
+      auth-scheme: ${ERP_AUTH_SCHEME:Bearer}
+    logistics:
+      enabled: ${LOGISTICS_INTEGRATION_ENABLED:false}
+      base-url: ${LOGISTICS_BASE_URL:}
+      token: ${LOGISTICS_API_TOKEN:}
+      auth-header: ${LOGISTICS_AUTH_HEADER:Authorization}
+      auth-scheme: ${LOGISTICS_AUTH_SCHEME:Bearer}
+    membership:
+      enabled: ${MEMBERSHIP_INTEGRATION_ENABLED:false}
+      base-url: ${MEMBERSHIP_BASE_URL:}
+      token: ${MEMBERSHIP_API_TOKEN:}
+      auth-header: ${MEMBERSHIP_AUTH_HEADER:Authorization}
+      auth-scheme: ${MEMBERSHIP_AUTH_SCHEME:Bearer}
+    monitoring:
+      enabled: ${MONITORING_INTEGRATION_ENABLED:false}
+      base-url: ${MONITORING_BASE_URL:}
+      token: ${MONITORING_API_TOKEN:}
+      auth-header: ${MONITORING_AUTH_HEADER:Authorization}
+      auth-scheme: ${MONITORING_AUTH_SCHEME:Bearer}
+    ticketing:
+      enabled: ${TICKETING_INTEGRATION_ENABLED:false}
+      base-url: ${TICKETING_BASE_URL:}
+      token: ${TICKETING_API_TOKEN:}
+      auth-header: ${TICKETING_AUTH_HEADER:Authorization}
+      auth-scheme: ${TICKETING_AUTH_SCHEME:Bearer}
+    # 产品溯源扩展连接器：默认关闭并使用 DemoTraceDataGateway，凭证仅保存在后端环境变量。
+    pim:
+      enabled: ${PIM_INTEGRATION_ENABLED:false}
+      base-url: ${PIM_BASE_URL:}
+      token: ${PIM_API_TOKEN:}
+    srm:
+      enabled: ${SRM_INTEGRATION_ENABLED:false}
+      base-url: ${SRM_BASE_URL:}
+      token: ${SRM_API_TOKEN:}
+    mes:
+      enabled: ${MES_INTEGRATION_ENABLED:false}
+      base-url: ${MES_BASE_URL:}
+      token: ${MES_API_TOKEN:}
+    qms:
+      enabled: ${QMS_INTEGRATION_ENABLED:false}
+      base-url: ${QMS_BASE_URL:}
+      token: ${QMS_API_TOKEN:}
+    wms:
+      enabled: ${WMS_INTEGRATION_ENABLED:false}
+      base-url: ${WMS_BASE_URL:}
+      token: ${WMS_API_TOKEN:}
+    tms:
+      enabled: ${TMS_INTEGRATION_ENABLED:false}
+      base-url: ${TMS_BASE_URL:}
+      token: ${TMS_API_TOKEN:}
+  ai:
+    mode: ${AI_MODE:mock}
+    max-description-length: 2000
+    # 1 次理解 + 1 次回复；仅当回复结构解析失败时允许 1 次格式纠正重试。
+    max-model-calls-per-diagnosis: 3
+    minimum-intent-confidence: ${AI_MINIMUM_INTENT_CONFIDENCE:0.55}
+    reuse-window-minutes: ${AI_REUSE_WINDOW_MINUTES:5}
+    max-diagnoses-per-minute: ${AI_MAX_DIAGNOSES_PER_MINUTE:5}
+    max-concurrent-diagnoses: ${AI_MAX_CONCURRENT_DIAGNOSES:2}
+  polling:
+    interval-ms: 800
+  async:
+    core-pool-size: ${DIAGNOSIS_CORE_POOL_SIZE:4}
+    queue-capacity: ${DIAGNOSIS_QUEUE_CAPACITY:100}
+  jwt:
+    secret: ${JWT_SECRET:supportops-local-development-jwt-secret-change-me-2026}
+    expiration-seconds: ${JWT_EXPIRATION_SECONDS:7200}
+  cors:
+    allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:4173}

@@ -1,0 +1,10 @@
+@baseUrl = http://localhost:8080/api/v1
+@token = paste-login-token-here
+
+### 查看连接器开关与配置完整性（不返回 URL 和 Token）
+GET {{baseUrl}}/integrations/status
+Authorization: Bearer {{token}}
+
+### 从已配置的外部工单平台导入工单及其业务号
+POST {{baseUrl}}/integrations/tickets/REAL-TICKET-001/import
+Authorization: Bearer {{token}}

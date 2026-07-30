@@ -1,0 +1,9 @@
+package com.example.supportops.module.portal.model.dto;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
+public record ConversationReplyDTO(
+        @NotBlank @Size(max = 2000) String content
+) {
+}

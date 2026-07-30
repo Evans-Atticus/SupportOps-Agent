@@ -1,0 +1,32 @@
+spring:
+  config:
+    activate:
+      on-profile: mock
+  datasource:
+    url: jdbc:h2:mem:supportops;MODE=MySQL;DB_CLOSE_DELAY=-1;DATABASE_TO_LOWER=TRUE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  sql:
+    init:
+      mode: never
+
+# 测试 Profile 始终使用确定性 Mock，避免项目根目录 .env 的真实模型配置影响自动化测试。
+supportops:
+  ai:
+    mode: mock
+
+# A harmless local endpoint allows the OpenAI-compatible bean to be constructed
+# without a real key. Mock services added on Day 15 will replace model calls.
+langchain4j:
+  open-ai:
+    chat-model:
+      api-key: ${AI_API_KEY:qianwen}
+      base-url: http://127.0.0.1:9/v1
+      model-name: mock-disabled
+      temperature: 0.1
+      max-tokens: 600
+      timeout: 2s
+      max-retries: 0
+      log-requests: false
+      log-responses: false
