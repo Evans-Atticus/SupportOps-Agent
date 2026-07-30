@@ -8,14 +8,26 @@ SupportOps Agent 是一个面向电商售后场景的全栈智能客服项目。
 
 <img width="1910" height="915" alt="image" src="https://github.com/user-attachments/assets/aa50dae1-bf81-4a8c-adf3-eb45e497db8a" />
 
+
+
 <img width="1910" height="915" alt="image" src="https://github.com/user-attachments/assets/d6c84844-275b-461d-878b-438515d3a76c" />
+
+
 
 <img width="1910" height="915" alt="image" src="https://github.com/user-attachments/assets/23817c51-bcaf-4b2c-a363-4462f8101193" />
 
+
+
 <img width="1910" height="915" alt="image" src="https://github.com/user-attachments/assets/91f7d5e9-d775-4301-9185-5252da283c36" />
+
+
 <img width="1910" height="915" alt="image" src="https://github.com/user-attachments/assets/0c3d6ac6-b79f-49f3-91a8-ab501879faac" />
 
+
+
 <img width="1910" height="915" alt="image" src="https://github.com/user-attachments/assets/ab073d49-cd90-49f6-8cb1-785daef3cd25" />
+
+
 
 
 
