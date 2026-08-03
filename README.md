@@ -234,15 +234,23 @@ Authorization: Bearer <admin-jwt>
 ```
 ## 当前 RAG 边界与演进方向
 
-当前版本采用按 SKU 隔离的轻量检索：Apache Tika 提取文本，按标题和长度切片，再以中文二元词、ASCII 词项和词频进行排序。它是可运行的 RAG 基线，但**尚未接入 Embedding 模型和向量数据库**。
+当前版本采用按 SKU 隔离的轻量检索：Apache Tika 提取文本，按标题和长度切片，再以中文二元词、ASCII 词项和词频进行排序。它是可运行的 RAG 基线，但近一步应将当前按 SKU 隔离的词项检索升级为混合检索。
 
-后续可演进为：
-
-- MySQL Full-Text/BM25 与向量检索的混合召回；
-- pgvector、Milvus、Elasticsearch 或 OpenSearch 向量索引；
-- Cross-Encoder/Reranker 重排；
-- 文档版本生效区间、租户和渠道等元数据过滤；
-- 基于命中率、MRR、事实正确率和拒答准确率的离线评测集。
-
-具体策略和升级接口见 [RAG检索策略.md](RAG检索策略.md)。
-
+1、抽象ProductKnowledgeRetriever接口，不改变现有结果。
+2、使用MySQL FULLTEXT替换Java应用层扫描评分。
+3、建立离线测试集，记录当前Recall@K、MRR、拒答准确率和跨SKU泄漏率。
+4、接入文档Embedding和向量索引。
+5、并行执行全文检索与向量召回，使用RRF融合。
+6、仅对低置信、语义复杂和安全问题执行Reranker。
+7、根据评测结果调整切片、候选数量、融合权重和阈值。
+8、数据量或并发量达到瓶颈后，再迁移到OpenSearch统一承载BM25和向量检索
+  
+- 生产链路：
+场景识别
+→ 仅产品知识场景进入RAG
+→ SKU/版本/渠道硬过滤
+→ FULLTEXT与向量并行召回
+→ RRF融合去重
+→ 判断是否需要Reranker
+→ 相关度及安全规则校验
+→ 生成可追溯回答
